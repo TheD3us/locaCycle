@@ -25,7 +25,7 @@ public class Gyropode extends Gyro {
 		System.out.println("Marque         : " + this.marque);
 		System.out.println("Modèle         : "+ this.modele);
 		System.out.println("Date d'achat   : " + this.dateAchat);
-		System.out.println("Tarif          : " + tarif);
+		System.out.println("Tarif          : " + tarif + " euros/heure");
 		System.out.println("Autonomie      : " + this.autonomie);
 		System.out.println("Taille Minimum : " + this.tailleMin);
 		
