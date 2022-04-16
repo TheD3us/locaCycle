@@ -1,4 +1,4 @@
-package fr.system;
+package bo;
 
 import java.time.LocalDate;
 
@@ -11,17 +11,16 @@ public class Velo extends Vehicule {
 	
 	
 
+	public Velo() {
+	}
+
 	public Velo(String marque, String modele, LocalDate dateAchat, int changementDeVitesse) {
 		super(marque, modele, dateAchat);
 		this.changementDeVitesse = changementDeVitesse;
 	}
 
-	public static double getTarif() {
+	public double getTarif() {
 		return tarif;
-	}
-
-	public static void setTarif(double tarif) {
-		Velo.tarif = tarif;
 	}
 
 	public int getChangementDeVitesse() {
@@ -35,14 +34,10 @@ public class Velo extends Vehicule {
 
 
 	@Override
-	public void afficher() {
-		System.out.println("---------------------------Vélo---------------------------" );
-		System.out.println("Marque       : " + this.marque);
-		System.out.println("Modèle       : "+ this.modele);
-		System.out.println("Date d'achat : " + this.dateAchat);
-		System.out.println("Tarif        : " + tarif + " euros/heure" );
-		System.out.println("Vitesses     : " + this.changementDeVitesse);
-		
+	public String toString() {
+		String resultat = "Velo ";
+		resultat += super.toString();
+		resultat += "Vitesses     : " + this.changementDeVitesse + "\n";
+		return resultat;
 	}
-	
 }
