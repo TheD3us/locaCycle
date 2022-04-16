@@ -1,6 +1,7 @@
 package fr.system;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,11 +39,13 @@ public class Locaciel {
 		Adresse ad03 = new Adresse(6, "avenue", "Guillaume Tell", "83200", "Bonlieu");
 		Client cli1 = new Client("Leblanc", "Leonard", ad01, null);
 		
-		
+	
 		int choix = -1;
+		while(choix != 0) {
 		System.out.println("⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜Bienvenue sur Locaciel⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜");
 		System.out.println("Faites votre choix :");
 		System.out.println("1 - Chercher un article");
+		System.out.println("2 - Créer un article");
 		
 		choix = sc.nextInt();
 		switch(choix) {
@@ -50,17 +53,64 @@ public class Locaciel {
 			rechercheArticle(mag1);
 			break;
 		}
+		case 2:{
+			creerArticle(mag1);
+		}
+		}
 		}
 	}
 	
+	private static void creerArticle(Magasin mag1) {
+		int choix = -1;
+		
+		System.out.println("Voulez vous entrer :");
+		System.out.println("1 - Velo");
+		System.out.println("2 - Gyropode");
+		System.out.println("3 - Gyroroue");
+		choix = sc.nextInt();
+		System.out.println("Veuillez entrer la marque :");
+		sc.nextLine();
+		String marque = sc.nextLine();
+		System.out.println("Veuillez entrer le modèle :");
+		String modele = sc.nextLine();
+		LocalDate date = LocalDate.now();
+		switch(choix) {
+		case 1 :{
+			System.out.println("Veuillez entrer le nombre de vitesses");
+			int vitesse = sc.nextInt();
+			Velo velo = new Velo(marque,modele,date,vitesse);
+			mag1.ajouterVehicule(velo);
+			break;
+		}
+		case 2 :{
+			System.out.println("Veuillez entrer l'autonomie");
+			int autonomie = sc.nextInt();
+			System.out.println("Veuillez entrer la taille minimum");
+			double taillemin = sc.nextDouble();
+			Gyropode gyropode = new Gyropode(marque,modele,date,autonomie,taillemin);
+			mag1.ajouterVehicule(gyropode);
+			break;
+		}
+		case 3 :{
+			System.out.println("Veuillez entrer l'autonomie");
+			int autonomie = sc.nextInt();
+			Gyroroue gyroroue = new Gyroroue(marque,modele,date,autonomie);
+			mag1.ajouterVehicule(gyroroue);
+			break;
+		}default :{
+			System.out.println("Veuillez entrer une valeur correcte");
+		}
+		}
+		
+	}
+
 	public static void rechercheArticle(Magasin mag1) {
 		String recherche = "";
 		System.out.println("Veuillez rentrer le nom du modèle à rechercher :");
 		sc.nextLine();
 		recherche = sc.nextLine();
 		Vehicule vRecherche = mag1.chercherVehicule(recherche);
-		List<Vehicule> vehiculeTrouves= new ArrayList<Vehicule>();
-		System.out.println(vRecherche);
+		System.out.println(vRecherche.toString());
 	}
 	
 

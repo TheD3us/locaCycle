@@ -64,7 +64,7 @@ public class Magasin {
 				recherche = (Gyroroue) current;
 				return recherche;
 			}else {
-				System.out.println("Modèle inconnu ou indisponible...");
+				System.out.println("...");
 			}
 			
 		
