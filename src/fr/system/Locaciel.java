@@ -29,6 +29,7 @@ public class Locaciel {
 		Magasin mag1 = new Magasin(listeVehicule);
 		mag1.ajouterVehicule(velo1);
 		mag1.ajouterVehicule(velo2);
+		mag1.ajouterVehicule(velo3);
 		mag1.ajouterVehicule(gyro1);
 		mag1.ajouterVehicule(gyro2);
 		mag1.ajouterVehicule(gyro3);
@@ -113,8 +114,17 @@ public class Locaciel {
 		System.out.println("Veuillez rentrer le nom du modèle à rechercher :");
 		sc.nextLine();
 		recherche = sc.nextLine();
-		Vehicule vRecherche = mag1.chercherVehicule(recherche);
-		System.out.println(vRecherche.toString());
+		List<Vehicule> vRecherche = mag1.chercherVehicule(recherche);
+		afficherVehicule(vRecherche);
+	}
+	
+	public static void afficherVehicule(List<Vehicule> listeVehiculeTrouve) {
+
+		System.out.println("🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲Liste des Articles🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲");
+		for(int i = 0; i < listeVehiculeTrouve.size(); i++) {
+			System.out.println(i);
+			System.out.println(listeVehiculeTrouve.get(i).toString());
+		}
 	}
 	
 	public static void supprimerArticle(Magasin mag1) {
@@ -123,6 +133,8 @@ public class Locaciel {
 		mag1.afficherVehicule();
 		System.out.println("Quel article supprimer ?");
 		choix = sc.nextInt();
+		mag1.supprimerVehicule(mag1.getListeVehicule().get(choix));
+		System.out.println("Article supprimé");
 		
 	}
 }

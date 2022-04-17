@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Magasin {
-	private Map<Integer,Vehicule> listeVehicule = new HashMap<>();
+	private List<Vehicule> listeVehicule = new ArrayList<>();
 	private List<Location> listeLocation = new ArrayList<Location>();
-	private static int compteur = 0;
 	
 	public List<Location> getListeLocation() {
 		return listeLocation;
@@ -20,17 +19,17 @@ public class Magasin {
 
 	
 	
-	public Map<Integer, Vehicule> getListeVehicule() {
+	public List<Vehicule> getListeVehicule() {
 		return listeVehicule;
 	}
 
-	public void setListeVehicule(Map<Integer, Vehicule> listeVehicule) {
+	public void setListeVehicule(List<Vehicule> listeVehicule) {
 		this.listeVehicule = listeVehicule;
 	}
 	
 	
 	
-	public Magasin(Map<Integer, Vehicule> listeVehicule) {
+	public Magasin(List<Vehicule> listeVehicule) {
 		this.listeVehicule = listeVehicule;
 	}
 
@@ -39,50 +38,31 @@ public class Magasin {
 	}
 
 	public void ajouterVehicule(Vehicule vehicule) {
-		listeVehicule.put(compteur,vehicule);
-		compteur ++;
+		listeVehicule.add(vehicule);
 	}
 	
 	public void afficherVehicule() {
 
 		System.out.println("🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲Liste des Articles🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲🚲");
-		for(Map.Entry current : listeVehicule.entrySet()) {
-			System.out.println(current.getKey());
-			System.out.println(current.getValue().toString());
+		for(int i = 0; i < listeVehicule.size(); i++) {
+			System.out.println(i);
+			System.out.println(listeVehicule.get(i).toString());
 			
 		}
 		
 	}
 	
-	public Vehicule chercherVehicule(String nomModèle) {
-		
-		
-		for(Map.Entry current : listeVehicule.entrySet()) {
-			if(current.getModele().equals(nomModèle) && current instanceof Velo) {
-				Velo recherche = new Velo();
-				recherche = (Velo) current;
-				return recherche;
+	public List<Vehicule> chercherVehicule(String nomModele){
+		List<Vehicule> listeVehiculeTrouve = new ArrayList<>();
+		for(Vehicule current : listeVehicule) {
+			if(current.getModele().contains(nomModele)) {
+				listeVehiculeTrouve.add(current);
 			}
-			else if(current.getModele().equals(nomModèle) && current instanceof Gyropode) {
-				Gyropode recherche = new Gyropode();
-				recherche = (Gyropode) current;
-				return recherche;
-			}
-			else if(current.getModele().equals(nomModèle) && current instanceof Gyroroue) {
-				Gyroroue recherche = new Gyroroue();
-				recherche = (Gyroroue) current;
-				return recherche;
-			}else {
-				System.out.println("...");
-			}
-			
-		
 		}
-		
-		return null;
-		
+		return listeVehiculeTrouve;
 	}
 	
+
 	public void supprimerVehicule(Vehicule vehicule) {
 
 				listeVehicule.remove(vehicule);
