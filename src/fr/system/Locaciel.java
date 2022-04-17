@@ -46,6 +46,7 @@ public class Locaciel {
 		System.out.println("Faites votre choix :");
 		System.out.println("1 - Chercher un article");
 		System.out.println("2 - Créer un article");
+		System.out.println("3 - Supprimer un article");
 		
 		choix = sc.nextInt();
 		switch(choix) {
@@ -55,6 +56,9 @@ public class Locaciel {
 		}
 		case 2:{
 			creerArticle(mag1);
+		}
+		case 3:{
+			supprimerArticle(mag1);
 		}
 		}
 		}
@@ -113,5 +117,12 @@ public class Locaciel {
 		System.out.println(vRecherche.toString());
 	}
 	
-
+	public static void supprimerArticle(Magasin mag1) {
+		int choix = -1;
+		System.out.println("Voici la liste des articles, tapez le numéro devant l'article que vous souhaitez supprimer :");
+		mag1.afficherVehicule();
+		System.out.println("Quel article supprimer ?");
+		choix = sc.nextInt();
+		
+	}
 }
