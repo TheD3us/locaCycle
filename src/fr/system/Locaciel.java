@@ -72,7 +72,7 @@ public class Locaciel {
 		System.out.println("3 - Supprimer un article");
 		System.out.println("4 - Locations en cours");
 		System.out.println("5 - Rechercher un client");
-		System.out.println("6 - Montangt non payé d'un client");
+		System.out.println("6 - Montant non payé d'un client");
 		
 		choix = sc.nextInt();
 			switch(choix) {
@@ -100,7 +100,7 @@ public class Locaciel {
 					mag1.afficherClient();
 					System.out.println("Veuilez choisir le numéro du client à vérifier");
 					choix = sc.nextInt();
-					System.out.println(mag1.facturesClientNonReglees(mag1.getListeClient().get(choix)));
+					System.out.println("Montant attendu" + mag1.facturesClientNonReglees(mag1.getListeClient().get(choix)) + " euros");
 					break;
 				}
 			}
