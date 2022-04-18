@@ -8,7 +8,11 @@ import java.util.Scanner;
 public class Magasin {
 	private List<Vehicule> listeVehicule = new ArrayList<>();
 	private List<Location> listeLocation = new ArrayList<Location>();
+	private List<Client> listeClient = new ArrayList<Client>();
+	
 	static Scanner sc = new Scanner(System.in);
+	
+	
 	public List<Location> getListeLocation() {
 		return listeLocation;
 	}
@@ -84,8 +88,7 @@ public class Magasin {
 		System.out.println("Veuillez rentrer le nom du modèle à rechercher :");
 		
 		recherche = sc.nextLine();
-		List<Vehicule> vRecherche = chercherVehicule(recherche);
-		afficherVehicule(vRecherche);
+		afficherVehicule(chercherVehicule(recherche));
 	}
 	
 	public static void afficherVehicule(List<Vehicule> listeVehiculeTrouve) {
@@ -159,4 +162,43 @@ public class Magasin {
 		System.out.println("Article supprimé");
 		
 	}
+
+	public List<Client> getListeClient() {
+		return listeClient;
+	}
+
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
+	}
+
+	public void ajouterClient(Client client) {
+		listeClient.add(client);
+	}
+	
+	public void rechercheClient() {
+		System.out.println("Veuillez saisir un nom de client");
+		String nom = sc.nextLine();
+		afficherClient(chercheClient(nom));
+	}
+	
+	public List<Client> chercheClient(String nom) {
+		List<Client> cRecherche = new ArrayList<Client>();
+		for(Client current : listeClient) {
+			if(current.getNom().contains(nom)) {
+				cRecherche.add(current);
+			}
+		}
+		return cRecherche;
+	}
+	
+	public static void afficherClient(List<Client> listeClient) {
+		System.out.println("👦👧👨👩👵👴👨‍🦳👩‍🦳🤴👸Liste de clients correspondants👸🤴👩‍🦳👨‍🦳👴👵👩👨👧👦");
+		for(Client current : listeClient) {
+			current.afficher();
+		}
+	}
+	
+	
+	
+	
 }

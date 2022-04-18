@@ -51,6 +51,9 @@ public class Locaciel {
 		mag1.ajouterLocation(loc3);
 		mag1.getListeLocation().get(1).isEstRegle();
 		mag1.getListeLocation().get(1).terminerLocation();
+		mag1.ajouterClient(cli1);
+		mag1.ajouterClient(cli2);
+		mag1.ajouterClient(cli3);
 		int choix = -1;
 		
 		while(choix != 0) {
@@ -60,6 +63,7 @@ public class Locaciel {
 		System.out.println("2 - Créer un article");
 		System.out.println("3 - Supprimer un article");
 		System.out.println("4 - Locations en cours");
+		System.out.println("5 - Rechercher un client");
 		
 		choix = sc.nextInt();
 			switch(choix) {
@@ -77,6 +81,10 @@ public class Locaciel {
 				}
 				case 4:{
 					mag1.consulterLocationEnCours();
+					break;
+				}
+				case 5:{
+					mag1.rechercheClient();
 					break;
 				}
 			}
