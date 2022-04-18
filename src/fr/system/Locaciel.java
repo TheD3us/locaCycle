@@ -1,6 +1,7 @@
 package fr.system;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,16 +47,23 @@ public class Locaciel {
 		Location loc1 = new Location(cli1,gyro3);
 		Location loc2 = new Location(cli2, velo3);
 		Location loc3 = new Location(cli3, velo3);
+		Location loc4 = new Location(cli3, velo3);
+		Location loc5= new Location(cli3, velo3);
+		Location loc6 = new Location(cli3, velo3);
 		mag1.ajouterLocation(loc1);
 		mag1.ajouterLocation(loc2);
 		mag1.ajouterLocation(loc3);
+		mag1.ajouterLocation(loc4);
+		mag1.ajouterLocation(loc5);
+		mag1.ajouterLocation(loc6);
+		loc4.setDateFin(LocalDateTime.of(2022, 06, 22, 8, 00));
 		mag1.getListeLocation().get(1).isEstRegle();
 		mag1.getListeLocation().get(1).terminerLocation();
 		mag1.ajouterClient(cli1);
 		mag1.ajouterClient(cli2);
 		mag1.ajouterClient(cli3);
 		int choix = -1;
-		
+
 		while(choix != 0) {
 		System.out.println("⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜Bienvenue sur Locaciel⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜");
 		System.out.println("Faites votre choix :");
@@ -64,6 +72,7 @@ public class Locaciel {
 		System.out.println("3 - Supprimer un article");
 		System.out.println("4 - Locations en cours");
 		System.out.println("5 - Rechercher un client");
+		System.out.println("6 - Montangt non payé d'un client");
 		
 		choix = sc.nextInt();
 			switch(choix) {
@@ -85,6 +94,13 @@ public class Locaciel {
 				}
 				case 5:{
 					mag1.rechercheClient();
+					break;
+				}
+				case 6:{
+					mag1.afficherClient();
+					System.out.println("Veuilez choisir le numéro du client à vérifier");
+					choix = sc.nextInt();
+					System.out.println(mag1.facturesClientNonReglees(mag1.getListeClient().get(choix)));
 					break;
 				}
 			}

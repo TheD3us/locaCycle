@@ -39,6 +39,17 @@ public class Magasin {
 		}
 	}
 	
+	public double facturesClientNonReglees(Client client) {
+		double montantTotal = 0;
+		for(Location current : listeLocation) {
+			if(current.getClient().equals(client) && !current.isEstRegle()) {
+				montantTotal += current.calculerMontant();
+			}
+		}
+		return montantTotal;
+	}
+	
+	
 	public List<Vehicule> getListeVehicule() {
 		return listeVehicule;
 	}
@@ -195,6 +206,14 @@ public class Magasin {
 		System.out.println("👦👧👨👩👵👴👨‍🦳👩‍🦳🤴👸Liste de clients correspondants👸🤴👩‍🦳👨‍🦳👴👵👩👨👧👦");
 		for(Client current : listeClient) {
 			current.afficher();
+		}
+	}
+	
+	public void afficherClient() {
+		System.out.println("👦👧👨👩👵👴👨‍🦳👩‍🦳🤴👸Liste de clients correspondants👸🤴👩‍🦳👨‍🦳👴👵👩👨👧👦");
+		for(int i = 0; i < listeClient.size(); i++) {
+			System.out.println(i);
+			getListeClient().get(i).afficher();
 		}
 	}
 	
