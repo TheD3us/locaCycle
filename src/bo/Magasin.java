@@ -148,4 +148,15 @@ public class Magasin {
 			
 		
 	}
+	
+	public void supprimerArticle() {
+		int choix = -1;
+		System.out.println("Voici la liste des articles, tapez le numéro devant l'article que vous souhaitez supprimer :");
+		afficherVehicule();
+		System.out.println("Quel article supprimer ?");
+		choix = sc.nextInt();
+		supprimerVehicule(listeVehicule.get(choix));
+		System.out.println("Article supprimé");
+		
+	}
 }

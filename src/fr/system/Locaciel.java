@@ -1,7 +1,6 @@
 package fr.system;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -73,7 +72,7 @@ public class Locaciel {
 					break;
 				}
 				case 3:{
-					supprimerArticle(mag1);
+					mag1.supprimerArticle();
 					break;
 				}
 				case 4:{
@@ -83,23 +82,6 @@ public class Locaciel {
 			}
 		}
 }
-	
-	
-
-
-	
-
-	
-	public static void supprimerArticle(Magasin mag1) {
-		int choix = -1;
-		System.out.println("Voici la liste des articles, tapez le numéro devant l'article que vous souhaitez supprimer :");
-		mag1.afficherVehicule();
-		System.out.println("Quel article supprimer ?");
-		choix = sc.nextInt();
-		mag1.supprimerVehicule(mag1.getListeVehicule().get(choix));
-		System.out.println("Article supprimé");
-		
-	}
 	
 
 }

@@ -38,7 +38,7 @@ public class TestCyclo {
 		Adresse ad03 = new Adresse(6, "avenue", "Guillaume Tell", "83200", "Bonlieu");
 		Client cli1 = new Client("Leblanc", "Leonard", ad01, null);
 		Location loc1 = new Location(cli1,velo1);
-		mag1.afficher(listeVehicule);
+		mag1.afficherVehicule();
 		loc1.afficher();
 		loc1.setDateFin(LocalDateTime.of(2022, 04, 16, 16, 50));
 		loc1.setEstRegle(true);
